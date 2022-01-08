@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mariadb:10.7.1-focal
+    container_name: mariadb_1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+volumes:
+  mariadb_data: null
+
+# docker run -it --network custom_auth_default --rm mariadb:10.7.1-focal mysql -hmariadb_1 -uroot -p
